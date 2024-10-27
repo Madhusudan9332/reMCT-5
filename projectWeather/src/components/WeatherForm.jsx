@@ -1,28 +1,20 @@
-import React, { useState } from "react";
+import { useContext, useState } from 'react';
+import { CityContext } from '../context/city/CityContext';
 import { Button } from "@material-tailwind/react";
 
-function WeatherForm({ addCity }) {
+function WeatherForm() {
   const [cityName, setCityName] = useState("");
+  const {fetchCityData } = useContext(CityContext);
 
   const handleAddCity = async () => {
-    const data = {};
-    console.log("hii");
-    const responce = await fetch(
-      `https://python3-dot-parul-arena-2.appspot.com/test?cityname=${cityName}`
-    );
-    const responceData = await responce.json();
-    console.log(responceData);
-    data["name"] = cityName;
-    data["description"] = responceData.description;
-    data["temperature"] = responceData.temp_in_celsius;
-    data["pressure"] = responceData.pressure_in_hPa;
-    data["repete"] = false;
-    data["dataAge"] = Math.floor(Math.random() * 12) + 12;
-
-    addCity(data);
-    console.log(data);
-  };
-
+    if (!cityName) {
+      alert("Please enter a city name");
+      return;
+    }else{
+      fetchCityData(cityName.trim());
+      setCityName("");
+    }
+  }
   return (
     <div className="flex justify-between items-center mb-4">
       <input

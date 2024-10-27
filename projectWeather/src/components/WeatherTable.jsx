@@ -1,7 +1,10 @@
-import React from "react";
+import React, { useContext, useState } from 'react';
+import { CityContext } from '../context/city/CityContext';
 import WeatherRow from "./WeatherRow";
 
-function WeatherTable({ cities, deleteCity }) {
+function WeatherTable() {
+  const { cities, deleteCity} = useContext(CityContext);
+
   return (
     <table className="weather-table">
       <thead>
@@ -16,6 +19,7 @@ function WeatherTable({ cities, deleteCity }) {
       </thead>
       <tbody>
         {cities.map((city, index) => (
+          console.log(city.name,city.repete),
           <WeatherRow key={index} city={city} deleteCity={deleteCity} />
         ))}
       </tbody>

@@ -1,6 +1,22 @@
-// import React from 'react';
+import React, { useContext, useState } from 'react';
+import { CityContext } from '../context/city/CityContext';
 
 const Navbar = () => {
+  const { cities, fetchCityData, loading, error } = useContext(CityContext);
+  
+
+  const [searchTerm, setSearchTerm] = React.useState('');
+
+  const handleKeyDown = (event) => {
+    if (event.key === 'Enter') {
+      setSearchTerm(event.target.value);
+      console.log('Search term saved:', event.target.value); 
+      console.log('Saved Cities ',cities);
+      fetchCityData(searchTerm.trim());
+      setSearchTerm('');
+    }
+  };
+
   return (
     <nav className="bg-white border-gray-200 dark:bg-gray-900">
       <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
@@ -33,6 +49,9 @@ const Navbar = () => {
               id="search-navbar"
               className="block w-full p-2 ps-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
               placeholder="Search..."
+              onKeyDown={handleKeyDown}
+              value={searchTerm}
+              onChange={(e) => setSearchTerm(e.target.value)}
             />
           </div>
           <button
