@@ -1,0 +1,92 @@
+@tailwind base;
+@tailwind component;
+@tailwind utilities;
+
+.app {
+    font-family: Arial, sans-serif;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .app-header {
+    background-color: #3a63a3;
+    color: white;
+    padding: 10px;
+    text-align: center;
+  }
+  
+  .app-content {
+    display: flex;
+  }
+  
+  .city-list {
+    width: 200px;
+    background-color: #f0f4f8;
+    padding: 10px;
+    border-right: 2px solid #ccc;
+  }
+  
+  .city-list h2 {
+    font-size: 28px;
+    font-weight: bold;
+    margin-bottom: 10px;
+    color: #fff;
+    background-color: #3a63a3;
+  }
+  
+  .city-list ul {
+    list-style-type: none;
+    padding: 0;
+  }
+  
+  .city-list li {
+    padding: 5px;
+    color: #3a63a3;
+    cursor: pointer;
+    border: 1px solid #3a63a3;
+    margin: 4px 0;
+    text-align: center;
+  }
+  
+  .main-content {
+    flex: 1;
+    padding: 10px;
+  }
+  
+  .weather-form {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 10px;
+  }
+  
+  .weather-table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  
+  .weather-table th, .weather-table td {
+    border: 1px solid #ccc;
+    padding: 8px;
+    text-align: center;
+  }
+  
+  .weather-table th {
+    background-color: #3a63a3;
+    color: white;
+  }
+  
+  .weather-table td input {
+    width: 80px;
+    text-align: center;
+  }
+  
+  .weather-table button {
+    background-color: red;
+    color: white;
+    border: none;
+    cursor: pointer;
+    padding: 5px 10px;
+  }
+  
